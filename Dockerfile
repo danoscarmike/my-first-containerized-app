@@ -10,6 +10,10 @@ COPY . /app
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
+# Create API Key environment variable
+ARG api_key=default
+ENV GOOGLE_MAPS_API_KEY=$api_key
+
 # Compile my Java code
 RUN javac App.java
 
