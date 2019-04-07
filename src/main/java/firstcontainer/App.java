@@ -12,13 +12,11 @@ import com.google.maps.model.PlacesSearchResponse;
 
 public class App {
 	
-//	private static final int PORT = 8080;
 	public static void main(String[] args) {
 		GeoApiContext context = new GeoApiContext.Builder()
-			    .apiKey("AIzaSyDamBH1yZI5Mjehlj5rfaQhNPITU07O-6o")
+			    .apiKey(System.getenv("GOOGLE_MAPS_API_KEY"))
 			    .build();
 		String input = "O'Keefe's Balboa St San Francisco";
-//		FindPlaceFromTextRequest.InputType inputType = FindPlaceFromTextRequest.InputType.valueOf("TEXT_QUERY"); 
 		TextSearchRequest query = PlacesApi.textSearchQuery(context, input);
 		try {
 			PlacesSearchResponse result = query.await();
@@ -40,8 +38,6 @@ public class App {
 			e.printStackTrace();
 		}
 		context.shutdown();
-		
-		
 	}
 
 }
